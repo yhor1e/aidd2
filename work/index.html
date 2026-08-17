@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <h1>Task Manager</h1>
+      <p class="app__subtitle">Stay organized, one task at a time.</p>
+    </header>
+
+    <main>
+      <form id="task-form" class="task-form" aria-label="Add a new task">
+        <label for="task-input" class="visually-hidden">Task description</label>
+        <input
+          type="text"
+          id="task-input"
+          name="task"
+          class="task-form__input"
+          placeholder="What needs to be done?"
+          autocomplete="off"
+          required
+          maxlength="200"
+        />
+        <button type="submit" class="task-form__button">
+          <span aria-hidden="true">+</span> Add Task
+        </button>
+      </form>
+
+      <div class="task-stats" id="task-stats" role="status" aria-live="polite">
+        No tasks yet
+      </div>
+
+      <div class="task-filters" role="group" aria-label="Filter tasks">
+        <button type="button" class="filter-btn is-active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="active">Active</button>
+        <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+      </div>
+
+      <ul id="task-list" class="task-list" aria-label="Task list">
+        <!-- Tasks are rendered here by script.js -->
+      </ul>
+
+      <p id="empty-state" class="empty-state" hidden>No tasks to show.</p>
+    </main>
+
+    <footer class="app__footer">
+      <button type="button" id="clear-completed" class="clear-btn">
+        Clear completed
+      </button>
+    </footer>
+  </div>
+
+  <template id="task-item-template">
+    <li class="task-item">
+      <label class="task-item__label">
+        <input type="checkbox" class="task-item__checkbox" />
+        <span class="task-item__text"></span>
+      </label>
+      <button type="button" class="task-item__delete" aria-label="Delete task">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
